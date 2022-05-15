@@ -4,15 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Pizza {
-    public class Topping {
-        private String name;
-        private int price;
+    private class Topping {
+        private final String name;
+        private final int price;
         private boolean chosen;
-        public Topping(String name, int price, boolean chosen) {
-            this.name = name;
-            this.price = price;
-            this.chosen = chosen;
-        }
+
         public Topping(String name, int price) {
             this.name = name;
             this.price = price;
@@ -32,13 +28,13 @@ public class Pizza {
             this.chosen = chosen;
         }
     }
-
     private ArrayList<Topping> toppings = new ArrayList<>(Arrays.asList(
         new Topping("Tomato", 150),
         new Topping("Olive", 150),
         new Topping("Sardine", 150),
         new Topping("Salami", 150)
     ));
+
     private Sizes size;
     private String name;
     private int total;
@@ -77,6 +73,6 @@ public class Pizza {
     }
 
     public static String getFormattedPrice(int price) {
-        return String.format("CHF %10.2f", price / 100.0);
+        return String.format("CHF %.2f", price / 100.0);
     }
 }

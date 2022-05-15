@@ -8,9 +8,8 @@ public enum Sizes {
     LARGE("large", 1600),
     EXTRA_LARGE("extra large", 1650);
 
-    private String text;
-    private int price;
-
+    private final String text;
+    private final int price;
     Sizes(String text, int price) {
         this.text = text;
         this.price = price;
