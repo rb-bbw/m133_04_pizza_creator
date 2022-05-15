@@ -16,19 +16,19 @@
         <div class="row">
             <ul class="list-group col">
                 <li
-                        th:each="size, status : *{sizes}"
+                        th:each="size, status : ${T(ch.bbw.pizzacreator.Sizes).values()}"
                         class="list-group-item"
                 >
                     <input
                             type="radio"
-                            th:field="*{sizes[__${status.index}__].chosen}"
-                            th:id="|${size.name}${status.count}|"
-                            th:value="true"
+                            th:field="*{size}"
+                            th:id="|${size.text}${status.count}|"
+                            th:value="${size}"
                     />
                     <label
-                            th:for="|${size.name}${status.count}|"
+                            th:for="|${size.text}${status.count}|"
                     >
-                        <span th:text="${size.name}"></span>
+                        <span th:text="${size.text}"></span>
                         <span class="badge bg-secondary rounded-pill" th:text="${size.price}"></span>
                     </label>
                 </li>

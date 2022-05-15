@@ -12,9 +12,8 @@
         <span th:text="*{name}"></span>
         <span
                 class="badge bg-secondary"
-                th:each="size : *{sizes}"
-                th:if="${size.chosen}"
-                th:text="${size.name}">
+                th:text="*{size.text}"
+        >
         </span>
     </h2>
 

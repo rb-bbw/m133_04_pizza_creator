@@ -32,35 +32,6 @@ public class Pizza {
             this.chosen = chosen;
         }
     }
-    public class Size {
-        private String name;
-        private int price;
-        private boolean chosen;
-
-        public Size(String name, int price, boolean chosen) {
-            this.name = name;
-            this.price = price;
-            this.chosen = chosen;
-        }
-        public Size(String name, int price) {
-            this.name = name;
-            this.price = price;
-            this.chosen = false;
-        }
-
-        public String getPrice() {
-            return getFormattedPrice(price);
-        }
-        public String getName() {
-            return name;
-        }
-        public boolean isChosen() {
-            return chosen;
-        }
-        public void setChosen(boolean chosen) {
-            this.chosen = chosen;
-        }
-    }
 
     private ArrayList<Topping> toppings = new ArrayList<>(Arrays.asList(
         new Topping("Tomato", 150),
@@ -68,12 +39,7 @@ public class Pizza {
         new Topping("Sardine", 150),
         new Topping("Salami", 150)
     ));
-    private ArrayList<Size> sizes = new ArrayList<>(Arrays.asList(
-            new Size("small", 1500),
-            new Size("medium", 1550),
-            new Size("large", 1600),
-            new Size("extra large", 1650)
-    ));
+    private Sizes size;
     private String name;
     private int total;
 
@@ -86,9 +52,7 @@ public class Pizza {
         for(Topping i : toppings) {
             if(i.chosen) this.total += i.price;
         }
-        for(Size i : sizes) {
-            if(i.chosen) this.total += i.price;
-        }
+        this.total += size.price();
     }
 
     public ArrayList<Topping> getToppings() {
@@ -98,11 +62,11 @@ public class Pizza {
         this.toppings = toppings;
     }
 
-    public ArrayList<Size> getSizes() {
-        return sizes;
+    public Sizes getSize() {
+        return size;
     }
-    public void setSizes(ArrayList<Size> sizes) {
-        this.sizes = sizes;
+    public void setSize(Sizes size) {
+        this.size = size;
     }
 
     public String getName() {
@@ -112,7 +76,7 @@ public class Pizza {
         this.name = name;
     }
 
-    protected String getFormattedPrice(int price) {
+    public static String getFormattedPrice(int price) {
         return String.format("CHF %10.2f", price / 100.0);
     }
 }
