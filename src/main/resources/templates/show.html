@@ -18,24 +18,29 @@
         </span>
     </h2>
 
-    <div class="row">
-        <ul class="list-group col">
-            <li
-                    th:each="topping : *{toppings}"
-                    th:if="${topping.chosen}"
-                    class="list-group-item"
+    <ul class="list-group">
+        <li
+                th:each="topping : *{toppings}"
+                th:if="${topping.chosen}"
+                class="list-group-item"
+        >
+            <input
+                    type="checkbox"
+                    checked
+                    th:value="${topping.name}"
+            />
+            <label
+                    th:for="${topping.name}"
             >
-                <input
-                        type="checkbox"
-                        checked
-                        th:value="${topping.name}"
-                />
-                <label
-                        th:for="${topping.name}"
-                        th:text="${topping.name}"
-                />
-            </li>
-        </ul>
-    </div>
+                <span th:text="${topping.name}"></span>
+                <span class="badge bg-secondary rounded-pill" th:text="${topping.price}"></span>
+            </label>
+        </li>
+    </ul>
+
+    <span class="display-6 mt-3 d-block">
+        Total:
+        <span class="mark" th:text="*{total}"></span>
+    </span>
 </body>
 </html>

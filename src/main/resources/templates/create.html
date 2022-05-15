@@ -22,13 +22,15 @@
                     <input
                             type="radio"
                             th:field="*{sizes[__${status.index}__].chosen}"
-                            th:id="${size.name} + ${status.count}"
+                            th:id="|${size.name}${status.count}|"
                             th:value="true"
                     />
                     <label
-                            th:for="${size.name} + ${status.count}"
-                            th:text="${size.name}"
-                    />
+                            th:for="|${size.name}${status.count}|"
+                    >
+                        <span th:text="${size.name}"></span>
+                        <span class="badge bg-secondary rounded-pill" th:text="${size.price}"></span>
+                    </label>
                 </li>
             </ul>
             <ul class="list-group col">
@@ -40,12 +42,14 @@
                             type="checkbox"
                             th:field="*{toppings[__${status.index}__].chosen}"
                             th:value="${topping.chosen}"
-                            th:id="${topping.name} + ${status.count}"
+                            th:id="|${topping.name}${status.count}|"
                     />
                     <label
-                            th:for="${topping.name} + ${status.count}"
-                            th:text="${topping.name} + ${topping.price}"
-                    />
+                            th:for="|${topping.name}${status.count}|"
+                    >
+                        <span th:text="${topping.name}"></span>
+                        <span class="badge bg-secondary rounded-pill" th:text="${topping.price}"></span>
+                    </label>
                 </li>
             </ul>
         </div>

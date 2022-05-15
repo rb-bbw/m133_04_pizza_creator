@@ -22,8 +22,8 @@ public class Pizza {
         public String getName() {
             return name;
         }
-        public int getPrice() {
-            return price;
+        public String getPrice() {
+            return getFormattedPrice(price);
         }
         public boolean isChosen() {
             return chosen;
@@ -36,6 +36,7 @@ public class Pizza {
         private String name;
         private int price;
         private boolean chosen;
+
         public Size(String name, int price, boolean chosen) {
             this.name = name;
             this.price = price;
@@ -47,8 +48,8 @@ public class Pizza {
             this.chosen = false;
         }
 
-        public int getPrice() {
-            return price;
+        public String getPrice() {
+            return getFormattedPrice(price);
         }
         public String getName() {
             return name;
@@ -63,9 +64,9 @@ public class Pizza {
 
     private ArrayList<Topping> toppings = new ArrayList<>(Arrays.asList(
         new Topping("Tomato", 150),
-        new Topping( "Olive", 150 ),
-        new Topping( "Sardine", 150 ),
-        new Topping( "Salami", 150 )
+        new Topping("Olive", 150),
+        new Topping("Sardine", 150),
+        new Topping("Salami", 150)
     ));
     private ArrayList<Size> sizes = new ArrayList<>(Arrays.asList(
             new Size("small", 1500),
@@ -76,14 +77,17 @@ public class Pizza {
     private String name;
     private int total;
 
-    public int getTotal() {
-        return total;
+    public String getTotal() {
+        return getFormattedPrice(this.total);
     }
     public void calculateTotal() {
         this.total = 0;
 
-        for (Topping i : toppings) {
-            this.total += i.price;
+        for(Topping i : toppings) {
+            if(i.chosen) this.total += i.price;
+        }
+        for(Size i : sizes) {
+            if(i.chosen) this.total += i.price;
         }
     }
 
@@ -106,5 +110,9 @@ public class Pizza {
     }
     public void setName(String name) {
         this.name = name;
+    }
+
+    protected String getFormattedPrice(int price) {
+        return String.format("CHF %10.2f", price / 100.0);
     }
 }
