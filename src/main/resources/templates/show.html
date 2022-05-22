@@ -9,7 +9,7 @@
     <h1 th:text="#{show.title}" />
     <h2>
         <span th:text="*{name}" />
-        <span class="badge bg-secondary" th:text="#{size.__*{size}__}" />
+        <span th:if="*{size}" th:text="#{size.__*{size}__}" class="badge bg-secondary" />
     </h2>
 
     <ul class="list-group">

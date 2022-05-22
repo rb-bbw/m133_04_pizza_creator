@@ -48,7 +48,7 @@ public class Pizza {
         for(Topping i : toppings) {
             if(i.chosen) this.total += i.price;
         }
-        this.total += size.price();
+        if(size != null) this.total += size.price();
     }
 
     public ArrayList<Topping> getToppings() {
