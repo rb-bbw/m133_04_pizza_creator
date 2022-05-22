@@ -3,21 +3,16 @@ package ch.bbw.pizzacreator;
 import static ch.bbw.pizzacreator.Pizza.getFormattedPrice;
 
 public enum Sizes {
-    SMALL("small", 1500),
-    MEDIUM("medium", 1550),
-    LARGE("large", 1600),
-    EXTRA_LARGE("extra large", 1650);
+    SMALL(1500),
+    MEDIUM(1550),
+    LARGE(1600),
+    EXTRA_LARGE(1650);
 
-    private final String text;
     private final int price;
-    Sizes(String text, int price) {
-        this.text = text;
+    Sizes(int price) {
         this.price = price;
     }
 
-    public String getText() {
-        return text;
-    }
     public String getPrice() {
         return getFormattedPrice(price);
     }

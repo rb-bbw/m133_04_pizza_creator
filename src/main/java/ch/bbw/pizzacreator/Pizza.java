@@ -29,10 +29,10 @@ public class Pizza {
         }
     }
     private ArrayList<Topping> toppings = new ArrayList<>(Arrays.asList(
-        new Topping("Tomato", 150),
-        new Topping("Olive", 150),
-        new Topping("Sardine", 150),
-        new Topping("Salami", 150)
+        new Topping("TOMATO", 150),
+        new Topping("OLIVE", 150),
+        new Topping("SARDINE", 150),
+        new Topping("SALAMI", 150)
     ));
 
     private Sizes size;
